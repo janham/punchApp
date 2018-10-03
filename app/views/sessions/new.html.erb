@@ -1,0 +1,15 @@
+<% privade(:title, "Log in") %>
+<h1>ログイン</h1>
+
+<%= form_for(:session, url:login_path) do |f| %>
+        
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+<% end %>
+
+<p>登録がまだの方は<%= link_to "こちら", signup_path %></p>
