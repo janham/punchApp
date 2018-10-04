@@ -6,8 +6,8 @@
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
             <% if logged_in? %>
-            <li><%= link_to "ユーザー一覧", '#' %></li>
-            <li><%= link_to "マイページ", user_path %></li>
+            <li><%= link_to "ユーザー一覧", users_path %></li>
+            <li><%= link_to "マイページ", current_user %></li>
             <li><%= link_to "設定", edit_user_path(current_user) %></li>
             <li><%= link_to "ログアウト", logout_path %></li>
             <% else %>
