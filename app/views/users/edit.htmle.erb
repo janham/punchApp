@@ -1,0 +1,23 @@
+<% provide(:titl, "Edit user") %>
+<h1>ユーザー設定</h1>
+
+<div>
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_message' %>
+    
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        
+        <%= f.label :パスワードの確認 %>
+        <%= f.password_field :password_confirmation %>
+        
+        <%= f.submit "更新", class: "btn btn-primary" %>
+    
+    <% end %>
+</div>
