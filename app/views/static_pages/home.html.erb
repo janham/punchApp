@@ -8,7 +8,7 @@
       <ul>
         <% @users.each do |user| %>
           <li>
-            <%= f.radio_button :user_id, "#{user.email}" %>
+            <%= f.radio_button :user_id, "#{user.id}" %>
             <%= gravatar_for user, size: 50 %>
             <%= link_to user.name, user %>
           </li>
@@ -18,8 +18,8 @@
         <%= f.label :password %>
         <%= f.password_field :password %>
         
-        <%= f.submit "出社", class: "btn btn-primary" %>
-        <%= f.submit "退社", name: "out", class: "btn btn-primary" %>
+        <%= f.submit "出社", name: 'status', class: "btn btn-primary" %>
+        <%= f.submit "退社", name: 'status', class: "btn btn-primary" %>
     
     <% end %>
 </div>
