@@ -8,9 +8,17 @@
       <ul>
         <% @users.each do |user| %>
           <li>
+<<<<<<< HEAD
             <%= f.radio_button :user_id, "#{user.id}" %>
             <%= gravatar_for user, size: 50 %>
             <%= link_to user.name, user %>
+=======
+            <label>
+              <%= f.radio_button :user_id, "#{user.id}" %>
+              <%= gravatar_for user, size: 50 %>
+              <%= link_to user.name, user %>
+            </label>
+>>>>>>> punch-section
           </li>
         <% end %>
       </ul>
@@ -19,11 +27,18 @@
         <%= f.password_field :password %>
         
 <<<<<<< HEAD
+<<<<<<< HEAD
         <%= f.submit "出社", name: "status", class: "btn btn-primary" %>
         <%= f.submit "退社", name: "status", class: "btn btn-primary" %>
 =======
         <%= f.submit "出社", name: 'status', class: "btn btn-primary" %>
         <%= f.submit "退社", name: 'status', class: "btn btn-primary" %>
+>>>>>>> punch-section
+=======
+        <label><%= f.radio_button :status, "in" %>出社</label>
+        <label><%= f.radio_button :status, "out" %>退社</label>
+        
+        <%= f.submit "Punch!", class: "btn btn-primary" %>
 >>>>>>> punch-section
     
     <% end %>
