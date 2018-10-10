@@ -7,11 +7,22 @@ class PunchesController < ApplicationController
   end
 
   def create
-    @punch = Punch.new(punch_params)
-    @user = User.find(punch_params[:user_id])
-    if @punch.save
-      flash[:success] = "打刻が完了しました"
+    user = User.find_by(id: params[:punch][:user_id])
+    if user && user.authenticate(params[:punch][:password])
+      log_in user
+      @user = user
+      @punch = Punch.new(user_id: params[:punch][:user_id],
+                         status: params[:punch][:status],
+                         punch_at: punch_time_now)
+      if @punch.save
+        flash.now[:success] = "打刻が完了しました"
+        redirect_to '/punches'
+      end
+    else
+      flash[:error] = "パスワードが正しくありません"
+      redirect_to root_url
     end
+    
   end
 
   def edit
@@ -22,10 +33,6 @@ class PunchesController < ApplicationController
   
   def punch_time_now
     Time.new
-  end
-  
-  def punch_params
-    
   end
   
 end

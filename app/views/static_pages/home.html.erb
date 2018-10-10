@@ -8,9 +8,11 @@
       <ul>
         <% @users.each do |user| %>
           <li>
-            <%= f.radio_button :user_id, "#{user.id}" %>
-            <%= gravatar_for user, size: 50 %>
-            <%= link_to user.name, user %>
+            <label>
+              <%= f.radio_button :user_id, "#{user.id}" %>
+              <%= gravatar_for user, size: 50 %>
+              <%= link_to user.name, user %>
+            </label>
           </li>
         <% end %>
       </ul>
@@ -18,8 +20,10 @@
         <%= f.label :password %>
         <%= f.password_field :password %>
         
-        <%= f.submit "出社", name: 'status', class: "btn btn-primary" %>
-        <%= f.submit "退社", name: 'status', class: "btn btn-primary" %>
+        <label><%= f.radio_button :status, "in" %>出社</label>
+        <label><%= f.radio_button :status, "out" %>退社</label>
+        
+        <%= f.submit "Punch!", class: "btn btn-primary" %>
     
     <% end %>
 </div>
