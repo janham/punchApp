@@ -1,2 +1,20 @@
-<h1>Punches#index</h1>
-<p>Find me in app/views/punches/index.html.erb</p>
+<% provide(:title, 'Time table') %>
+
+<table>
+  <tr>
+    <th>お名前</th>
+    <th>出社</th>
+    <th>退社</th>
+  </tr>
+  <tr>
+    <% @users.each do |user| %>
+    <td>
+    <%= gravatar_for user, size: 50 %>
+    <%= link_to user.name, user %>
+    </td>
+    
+    <td></td>
+    <td></td>
+    <% end %>
+  </tr>
+</table>
