@@ -1,6 +1,7 @@
 class PunchesController < ApplicationController
   
   def index
+    @punches = Punch.all
   end
 
   def show
