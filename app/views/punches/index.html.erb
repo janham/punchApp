@@ -1,22 +1,32 @@
 <% provide(:title, 'Time table') %>
 
+<%= link_to "戻る", logout_path, method: :delete %>
+
 <table>
   <tr>
     <th>お名前</th>
     <th>出社</th>
     <th>退社</th>
+    <th></th>
   </tr>
   <tr>
-    <% @users.each do |user| %>
+    <% @punches.each do |punch| %>
     <td>
-      <%= gravatar_for user, size: 50 %>
-      <%= link_to user.name, user %>
+      <%= gravatar_for punch.user, size: 50 %>
+      <%= link_to punch.user.name, punch.user %>
     </td>
     <td>
-      <%= @punch.
+      <%= punch.punch_at_in %>
     </td>
     <td>
-      
+      <% if punch.punch_at_out %>
+        <%= punch.punch_at_out %>
+      <% end %>
+    </td>
+    <td>
+      <% if punch.user_id == current_user.id %>
+      <%= link_to "変更", edit_punch_path %>
+      <% end %>
     </td>
     <% end %>
   </tr>
