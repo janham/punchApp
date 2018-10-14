@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181010124941) do
+ActiveRecord::Schema.define(version: 20181014140216) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20181010124941) do
     t.datetime "updated_at", null: false
     t.datetime "punch_at_in"
     t.datetime "punch_at_out"
+    t.date "punch_date"
     t.index ["user_id"], name: "index_punches_on_user_id"
   end
 
