@@ -1,2 +1,22 @@
-<h1>Punches#edit</h1>
-<p>Find me in app/views/punches/edit.html.erb</p>
+<% provide(:title, 'Time table') %>
+<h1>打刻時間の変更</h1>
+
+<%= gravatar_for @punch.user, size: 50 %>
+<%= link_to @punch.user.name, @punch.user %>
+
+<div>
+    <%= form_for(@punch) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+    
+        <%= f.label :punch_at_in, "出社時間" %>
+        <%= f.datetime_select :punch_at_in, minute_step: 5, default: @punch.punch_at_in %>
+        
+        <%= f.label :punch_at_out, "退社時間" %>
+        <% if punch_at_out? %>
+            <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
+        <% else %>
+            <%= f.datetime_select :punch_at_out, minute_step: 5, include_blank: true %>
+        <% end %>
+        <%= f.submit "更新", class: "btn btn-primary" %>
+    <% end %>
+</div>

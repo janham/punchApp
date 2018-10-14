@@ -25,7 +25,7 @@
     </td>
     <td>
       <% if punch.user_id == current_user.id %>
-      <%= link_to "変更", edit_punch_path %>
+      <%= link_to "変更", edit_punch_path(punch.id) %>
       <% end %>
     </td>
     <% end %>
