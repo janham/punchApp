@@ -7,15 +7,18 @@
 <div>
     <%= form_for(@punch) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-    
-        <%= f.label :punch_at_in, "出社時間" %>
-        <%= f.datetime_select :punch_at_in, minute_step: 5, default: @punch.punch_at_in %>
-        
-        <%= f.label :punch_at_out, "退社時間" %>
-        <% if punch_at_out? %>
-            <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
+        <% if punch_at_session_in? %>
+            変更前<%= @punch.punch_at_in %>
+            <%= f.label :punch_at_in, "出社時間" %>
+            <%= f.datetime_select :punch_at_in, minute_step: 5, default: @punch.punch_at_in %>
         <% else %>
-            <%= f.datetime_select :punch_at_out, minute_step: 5, include_blank: true %>
+            <%= f.label :punch_at_out, "退社時間" %>
+            <% if punch_at_out? %>
+                変更前<%= @punch.punch_at_out %>
+                <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
+            <% else %>
+                <%= f.datetime_select :punch_at_out, minute_step: 5, include_blank: true %>
+            <% end %>
         <% end %>
         <%= f.submit "更新", class: "btn btn-primary" %>
     <% end %>

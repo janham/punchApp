@@ -1,33 +1,43 @@
 <% provide(:title, 'Time table') %>
 
-<%= link_to "戻る", logout_path, method: :delete %>
+<%= link_to "戻る", root_path %>
 
 <table>
-  <tr>
-    <th>お名前</th>
-    <th>出社</th>
-    <th>退社</th>
-    <th></th>
-  </tr>
-  <tr>
-    <% @punches.each do |punch| %>
-    <td>
-      <%= gravatar_for punch.user, size: 50 %>
-      <%= link_to punch.user.name, punch.user %>
-    </td>
-    <td>
-      <%= punch.punch_at_in %>
-    </td>
-    <td>
-      <% if punch.punch_at_out %>
-        <%= punch.punch_at_out %>
+  <div>
+    <tr>
+      <th>お名前</th>
+      <th>出社</th>
+      <th>退社</th>
+    </tr>
+  </div>
+  <div>
+    <tr>
+      <% @punches.each do |punch| %>
+      <td>
+        <%= gravatar_for punch.user, size: 50 %>
+        <%= link_to punch.user.name, punch.user %>
+      </td>
+      <td>
+        <% if logged_in? && punch.user_id == current_user.id %>
+          <%= link_to "#{punch.punch_at_in}", edit_punch_path(punch, edit: 'in') %>
+        <% else %>
+          <%= punch.punch_at_in %>
+        <% end %>
+      </td>
+      <td>
+        <% if punch.punch_at_out %>
+          <% if logged_in? %>
+            <% if punch.user_id == current_user.id %>
+              <%= link_to "#{punch.punch_at_out}", edit_punch_path(punch, edit: 'out') %>
+            <% else %>
+              <%= punch.punch_at_out %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>no punch</p>
+        <% end %>
+      </td>
       <% end %>
-    </td>
-    <td>
-      <% if punch.user_id == current_user.id %>
-      <%= link_to "変更", edit_punch_path(punch.id) %>
-      <% end %>
-    </td>
-    <% end %>
-  </tr>
+    </tr>
+  </div>
 </table>
