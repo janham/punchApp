@@ -14,18 +14,21 @@ class PunchesController < ApplicationController
         log_in user
       end
       @user = user
-      @punch = @user.punches.new(status: params[:punch][:status])
-      if @punch.status == "in"
-        @punch.punch_at_in = Time.now
+      if params[:punch][:status] == "in"
+        @punch = @user.punches.new(status: params[:punch][:status], punch_at_in: Time.new)
+        data = @punch.punch_at_in
+        @punch.punch_date = to_year_date(data).to_i
       else
-        @punch.punch_at_out = Time.now
+        punches = Punch.where(user_id: params[:punch][:user_id])
+        @punch = punches.find_by(punch_date: today)
+        @punch.punch_at_out = Time.new
       end
       if @punch.save
         flash.now[:success] = "打刻が完了しました"
         redirect_to '/punches'
       end
     else
-      flash[:error] = "パスワードが正しくありません"
+      flash[:error] = "アカウントが未選択、またはパスワードが正しくありません"
       redirect_to root_url
     end
   end
@@ -42,17 +45,9 @@ class PunchesController < ApplicationController
   def update
     @punch = Punch.find_by(id:params[:id])
     if session[:punch_at] == "in"
-      @punch.punch_at_in = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i,
-                                           params[:punch]["punch_at_in(2i)"].to_i,
-                                           params[:punch]["punch_at_in(3i)"].to_i,
-                                           params[:punch]["punch_at_in(4i)"].to_i,
-                                           params[:punch]["punch_at_in(5i)"].to_i)
+      @punch.punch_at_in = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i, params[:punch]["punch_at_in(2i)"].to_i, params[:punch]["punch_at_in(3i)"].to_i, params[:punch]["punch_at_in(4i)"].to_i, params[:punch]["punch_at_in(5i)"].to_i)
     else
-      @punch.punch_at_out = Time.zone.local(params[:punch]["punch_at_out(1i)"].to_i,
-                                            params[:punch]["punch_at_out(2i)"].to_i,
-                                            params[:punch]["punch_at_out(3i)"].to_i,
-                                            params[:punch]["punch_at_out(4i)"].to_i,
-                                            params[:punch]["punch_at_out(5i)"].to_i)
+      @punch.punch_at_out = Time.zone.local(params[:punch]["punch_at_out(1i)"].to_i, params[:punch]["punch_at_out(2i)"].to_i, params[:punch]["punch_at_out(3i)"].to_i, params[:punch]["punch_at_out(4i)"].to_i, params[:punch]["punch_at_out(5i)"].to_i)
     end
     if @punch.save
       flash[:success] = "打刻時間を更新しました"
@@ -64,49 +59,15 @@ class PunchesController < ApplicationController
 
   def destroy
   end
-
-end
-
-=begin
   
-punch_data = Punch.find_by(user_id: current_user.id)
-  if punch_data.nil
-    @punch = @user.punch.new(punch_at_in: punch_time_now, status: params[:punch][:status])
-      if @punch.save
-        flash.now[:success] = "打刻が完了しました" 
-        redirect_to '/punches'
-      end
-  else
-    if punch_data.punch_at_in.include(today)
-      
-    
-  
-  
-#    SELECT * FROM punches WHERE user_id == user.id AND Time.today
-
-#    where("カラム名 like '%検索テキスト%'")
-
-def create
-    user = User.find_by(id: params[:punch][:user_id])
-    if user && user.authenticate(params[:punch][:password])
-      log_in user
-      @user = user
-      params[:punch][:status].nil?
-      @punch = @user.punch.new(status: params[:punch][:status])
-      if @punch.save
-        if @punch.status == "in"
-          @punch.punch_at_in = punch_time_now
-        else
-          
-          @punch.status = "out"
-          @punch.punch_at_out = pundh_time_now
-        flash.now[:success] = "打刻が完了しました"
-        redirect_to '/punches'
-      end
-    else
-      flash[:error] = "パスワードが正しくありません"
-      redirect_to root_url
-    end
+  #年日のみの文字列に変換するメソッド
+  def to_year_date(data)
+    data.year.to_s + data.month.to_s + data.day.to_s
   end
   
-=end
+  #今日の年日のみを返すメソッド
+  def today
+    now = Time.new
+    return to_year_date(now).to_i
+  end
+end
