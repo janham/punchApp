@@ -1,4 +1,5 @@
 class PunchesController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @punches = Punch.all
@@ -6,6 +7,7 @@ class PunchesController < ApplicationController
 
   def create
     user = User.find_by(id: params[:punch][:user_id])
+    @user = user
     if user && user.authenticate(params[:punch][:password])
       if logged_in?
         log_out
@@ -13,7 +15,6 @@ class PunchesController < ApplicationController
       else
         log_in user
       end
-      @user = user
       if params[:punch][:status] == "in"
         @punch = @user.punches.new(status: params[:punch][:status], punch_at_in: Time.new)
         data = @punch.punch_at_in
@@ -34,7 +35,7 @@ class PunchesController < ApplicationController
   end
 
   def edit
-    @punch = Punch.find_by(id:params[:id])
+    @punch = Punch.find_by(id: params[:id])
     if params[:edit] == "in"  #出社時間の編集リンク
       session[:punch_at] = "in"
     else                      #退社時間の編集リンク 
@@ -43,7 +44,7 @@ class PunchesController < ApplicationController
   end
 
   def update
-    @punch = Punch.find_by(id:params[:id])
+    @punch = Punch.find_by(id: params[:id])
     if session[:punch_at] == "in"
       @punch.punch_at_in = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i, params[:punch]["punch_at_in(2i)"].to_i, params[:punch]["punch_at_in(3i)"].to_i, params[:punch]["punch_at_in(4i)"].to_i, params[:punch]["punch_at_in(5i)"].to_i)
     else
@@ -58,6 +59,9 @@ class PunchesController < ApplicationController
   end
 
   def destroy
+    Punch.find(params[:id]).destroy
+    flash[:success] = "打刻を削除しました"
+    redirect_to root_url
   end
   
   #年日のみの文字列に変換するメソッド
@@ -69,5 +73,14 @@ class PunchesController < ApplicationController
   def today
     now = Time.new
     return to_year_date(now).to_i
+  end
+  
+  #beforeアクション
+  
+  def correct_user
+    punch = Punch.find_by(id: params[:id])
+    user_id = punch.user_id
+    @user = User.find(user_id)
+    redirect_to(root_url) unless current_user?(@user)
   end
 end
