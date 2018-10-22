@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+かんたんweb勤怠表アプリケーション
+ユーザー登録後、３クリックで勤怠時間を記録できるアプリケーションです。
 
-Things you may want to cover:
+基本的機能は作成完了
 
-* Ruby version
+現在は機能拡張・UI/UXを作成中
 
-* System dependencies
+sampleアカウント
 
-* Configuration
+ユーザー名:　usagisan
 
-* Database creation
+メールアドレス: usagisan@gmail.com
 
-* Database initialization
+パスワード: usagisan
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+　使い方
+ 
+ ①ユーザーを登録(メールアドレス、パスワードの設定)
+ 
+ ②Home画面に移動したら
+ 
+ ③表示されているアカウント一覧から自分のアカウント選択
+ 
+ ④出勤または退勤を選択
+ 
+ ⑤自分のパスワードを入力
+ 
+ ⑥Punch!ボタンをクリックで打刻完了！
+ 
+ ・Punch　list(打刻時間一覧)からすでに登録した時間を編集可能
+ 
 
-* Deployment instructions
+Ruby 2.4.1
 
-* ...
+Rails 5.1.6
