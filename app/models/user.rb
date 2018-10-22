@@ -3,11 +3,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
+  mount_uploader :picture, PictureUploader
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  validate  :picture_size
   
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -36,4 +38,12 @@ class User < ApplicationRecord
   def feed
     Post.where("user_id = ?", id)
   end
+  
+  private
+    #プロフィール画像のサイズをバリデーションする
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "アップロードできる画像サイズは5MBまでです")
+      end
+    end
 end

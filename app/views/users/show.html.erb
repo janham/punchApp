@@ -1,5 +1,6 @@
 <% provide(:title, @user.name) %>
 <h1>
+  <%= image_tag @user.picture.url if @user.picture? %>
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
