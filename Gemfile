@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 gem 'rails',        '5.1.6'
+gem 'bootstrap', '~> 4.1.1'
 gem 'bcrypt',       '3.1.12'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
