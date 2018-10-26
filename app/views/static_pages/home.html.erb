@@ -1,23 +1,34 @@
 <% full_title(yield(:title)) %>
-  <h1>punchApp</h1>
-  
-  <%= link_to "アカウントの追加", signup_path, class: "btn btn-lg btn-primary" %>
-  <div>
-    <%= form_for(@punch, url:{ controller: :punches, action: :create }) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <ul>
-        <% @users.each do |user| %>
+<div class="main">
+  <%= render 'layouts/flash' %>
+  <div class="container">
+    <div>
+      <%= form_for(@punch, url:{ controller: :punches, action: :create }) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <ul class="account-list list">
+          <li><%= link_to "＋アカウントの追加", signup_path %></li>
+          <% @users.each do |user| %>
           <li>
-            <%= f.radio_button :user_id, "#{user.id}" %>
-            <%= gravatar_for user, size: 50 %>
-            <%= link_to user.name, user %>
+            <label>
+            <%= f.radio_button :user_id, "#{user.id}", class: "user-radio" %>
+            <%= user_img(user) %>
+            <%= user.name %>
+            </label>
           </li>
-        <% end %>
-      </ul>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        <label><%= f.radio_button :status, "in" %>出社</label>
-        <label><%= f.radio_button :status, "out" %>退社</label>
-        <%= f.submit "Punch!", class: "btn btn-primary" %>
-    <% end %>
+          <% end %>
+        </ul>
+        <div class="punch-pass">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <dev class="status-select">
+          <label><%= f.radio_button :status, "in", class: "status-in" %>出勤</label>
+          <label><%= f.radio_button :status, "out", class: "status-out" %>退勤</label>
+        </dev>
+        <div class="punch-btn">
+          <%= f.submit "Punch!", class: "btn btn-primary", id: "punch-btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>

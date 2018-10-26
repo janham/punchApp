@@ -1,17 +1,22 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= image_tag @user.picture.url if @user.picture? %>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
-<div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>posts (<%= @user.posts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
+<div class="main">
+  <div class="container">
+    <div class="user-show">
+      <h1>
+        <%= image_tag @user.picture.url, id: "user-show-icon" %>
+        <%= @user.name %>
+      </h1>
+      <div class="col-md-8">
+          <% if @user.posts.any? %>
+            <h3>posts (<%= @user.posts.count %>)</h3>
+            <ol class="microposts">
+              <%= render @posts %>
+            </ol>
+            <%= will_paginate @posts %>
+          <% end %>
+        </div>
+      
+      <%= render 'shared/punch_list' %>
+    </div>
   </div>
-
-<%= render 'shared/punch_list' %>
+</div>

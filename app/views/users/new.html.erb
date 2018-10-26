@@ -1,24 +1,32 @@
 <% provide(title: "Signup") %>
-<h1>Sign up</h1>
-
-<div>
-    <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-    
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-        
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        
-        <%= f.label :パスワードの確認 %>
-        <%= f.password_field :password_confirmation %>
-        
-        <%= f.submit "アカウント登録", class: "btn btn-primary" %>
-    
-    <% end %>
+<div class="main">
+  <div class="container">
+    <div class="user-new-section">
+      <h1>Sign up</h1>
+        <div class="user-new-form">
+          <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="new-name form">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="new-email form">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+          <div class="new-password form">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
+          <div class="new-password_confirmation form">
+            <%= f.label :パスワードの確認 %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+          <div class="user-new-btn form">
+            <%= f.submit "アカウント登録", class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
 </div>
-

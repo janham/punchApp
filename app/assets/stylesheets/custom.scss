@@ -1,0 +1,401 @@
+* {
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #2d3133;
+  font-size: 14px;
+}
+
+input {
+  background-color: transparent;
+  outline-width: 0;
+}
+
+form input[type="submit"] {
+  border: none;
+  cursor: pointer;
+}
+
+/* layouts ========================== */
+
+body {
+  color: #2d3133;
+  background-color: #3ecdc6;
+  margin: 0;
+  min-height: 1vh;
+}
+
+.main {
+  position: absolute;
+  top: 64px;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-color: #f5f8fa;
+}
+
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  clear: both;
+}
+
+#user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.alert {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.alert-error {
+  background-color: red;
+}
+
+.alert-success {
+  background-color: blue;
+}
+
+.list {
+  a:hover {
+    color: green;
+  }
+}
+
+/* header ========================== */
+
+header {
+  height: 64px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  position: relative;
+}
+
+.header-menus {
+  li {
+    float: left;
+    line-height: 64px;
+    font-size: 13px;
+    color: white;
+    padding-left: 15px;
+    
+    #user-icon {
+      margin-top: 7px;
+      display: block;
+    }
+  }
+  
+  a {
+    float: left;
+    font-size: 13px;
+    color: white;
+  }
+}
+
+.header-menus-left {
+  float: left;
+  padding-left: 20px;
+}
+
+.header-menus-right {
+  float: right;
+  padding-right: 40px;
+}
+
+#logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* Home ========================== */
+
+.account-list {
+  padding-left: 100px;
+  padding-right: 100px;
+  
+  li {
+    padding: 10px 20px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+    display: table;
+    width: 100%;
+  }
+  
+  label {
+    display:block;
+    position:relative;
+    padding-left: 25px;
+    line-height: 50px;
+    font-size: 20px;
+  }
+  
+  label input {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    margin:auto;
+  }
+  
+  img {
+    float: left;
+    margin-right: 15px;
+  }
+  
+  a {
+    float: left;
+  }
+}
+
+.punch-pass {
+  text-align: center;
+  margin-top: 20px;
+  
+  #punch_password {
+    margin-left: 15px;
+  }
+}
+
+.status-select {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  
+  label {
+    display:inline-block;
+    position:relative;
+    padding-left: 25px;
+    line-height: 50px;
+    font-size: 30px;
+    margin-left: 35px;
+    margin-right: 35px;
+  }
+  
+  label input {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    margin:auto;
+  }
+}
+
+.punch-btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  
+  #punch-btn {
+    display: inline-block;
+    padding: 8px 24px;
+    color: white;
+    opacity: 0.8;
+    border-radius: 4px;
+    background-color: #f778b8;
+    cursor: pointer;
+    box-shadow: 0 5px #e04893;
+    font-size: 35px;
+
+    &:hover {
+      opacity: 1;
+    }
+    
+    &:active {
+      position: relative;
+      top: 7px;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Stamp list ========================== */
+
+.back-btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  
+  #back-btn {
+    display: inline-block;
+    padding: 8px 24px;
+    color: white;
+    opacity: 0.8;
+    border-radius: 4px;
+    background-color: #f778b8;
+    cursor: pointer;
+    box-shadow: 0 5px #e04893;
+    font-size: 20px;
+
+    &:hover {
+      opacity: 1;
+    }
+    
+    &:active {
+      position: relative;
+      top: 7px;
+      box-shadow: none;
+    }
+  }
+}
+
+
+.punch-list {
+  margin-top: 20px;
+  
+   li {
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+    display: inline-block;
+    float: left;
+   }
+}
+
+.punch-list-title {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  
+  li {
+    line-height: 44px;
+    text-align: center;
+  }
+}
+
+.punch-list-contents {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 2px;
+  
+  li {
+    line-height: 60px;
+  }
+  
+  #user-icon {
+    vertical-align: middle;
+  }
+}
+
+.user-img {
+  width: 10%;
+}
+
+.user-name {
+  width: 30%;
+}
+
+.punch-at-in-time {
+  width: 30%;
+}
+
+.punch-at-out-time {
+  width: 30%;
+}
+
+.user-img-contents {
+  text-align: center;
+}
+
+.user-name-contents {
+  
+  a {
+    margin-left: 10px;
+    font-size: 20px;
+  }
+}
+
+/* User show ========================== */
+
+.user-show {
+  #user-show-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* User edit ========================== */
+
+.form {
+  margin-top: 30px;
+}
+
+.user-edit-form {
+  padding: 20px 50px 50px 50px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  width: 100%;
+  
+  label {
+    display: inline-block;
+    width: 200px;
+  }
+}
+
+/* User new ========================== */
+
+.user-new-form {
+  padding: 20px 50px 50px 50px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  width: 100%;
+  
+  label {
+    display: inline-block;
+    width: 200px;
+  }
+}
+
+/* User login ========================== */
+
+.user-login-form {
+  padding: 20px 50px 50px 50px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  width: 100%;
+  
+  label {
+    display: inline-block;
+    width: 200px;
+  }
+  
+  span {
+    font-size: 10px;
+    vertical-align: middle;
+  }
+}
+

@@ -1,7 +1,7 @@
 <% provide(:title, 'Time table') %>
 <h1>打刻時間の変更</h1>
 
-<%= gravatar_for @punch.user, size: 50 %>
+<%= user_img(@user) %>
 <%= link_to @punch.user.name, @punch.user %>
 
 <div>

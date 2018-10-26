@@ -1,20 +1,32 @@
 <% provide(:title, "Log in") %>
-<h1>ログイン</h1>
-
-<%= form_for(:session, url:login_path) do |f| %>
-        
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-        
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        
-        <%= f.label :remember_me ,class: "checkbox inline" do %>
-          <%= f.check_box :remember_me %>
-          <span>次回からパスワード入力を省略する</span>
+<div class="main">
+  <div class="container">
+    <div class="user-login-section">
+      <h1>ログイン</h1>
+      <div class="user-login-form">
+        <%= form_for(:session, url:login_path) do |f| %>
+        <div class="login-email form">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+        <div class="login-password form">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="login-remember">
+          <%= f.label :remember_me ,class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %>
+            <span>次回からパスワード入力を省略する</span>
+          <% end %>
+        </div>
+        <div class="login-btn form">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
         <% end %>
-        
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
-<% end %>
-
-<p>登録がまだの方は<%= link_to "こちら", signup_path %></p>
+        <div class="sign-up-link form">
+        <p>登録がまだの方は<%= link_to "こちら", signup_path %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,26 @@
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "punchApp", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Stamp list", punches_path %></li>
-            <% if logged_in? %>
-            <li><%= link_to "#{current_user.name}", current_user %></li>
-            <li><%= link_to "設定", edit_user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-            <% else %>
-            <li><%= link_to "ログイン", login_path %></li>
-            <% end %>
-            
-          </ul>
-        </nav>
-      </div>
-    </header>
+<header>
+  <div>
+    <nav>
+      <ul class="header-menus header-menus-left">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+      </ul>
+    </nav>
+    <%= link_to "PunchApp", root_path, id: "logo" %>
+    <nav>
+      <ul class="header-menus header-menus-right">
+        <li><%= link_to "Stamp list", punches_path %></li>
+        <% if logged_in? %>
+        <li>
+          <%= link_to user_img(current_user), current_user %>
+        </li>
+        <li><%= link_to "設定", edit_user_path(current_user) %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "ログイン", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+    

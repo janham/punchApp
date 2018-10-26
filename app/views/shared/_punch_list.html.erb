@@ -1,39 +1,38 @@
-<table>
-  <div>
-    <tr>
-      <th>名前</th>
-      <th>出社</th>
-      <th>退社</th>
-    </tr>
-  </div>
-  <div>
-    <tr>
+    <div class="punch-list list">
+      <ul class="punch-list-title">
+        <li class="user-img user-img-title">　</li>
+        <li class="user-name user-name-title">　</li>
+        <li class="punch-at-in-time punch-at-in-time-title">出社</li>
+        <li class="punch-at-out-time punch-at-out-tim-title">退社</li>
+      </ul>
       <% @punches.each do |punch| %>
-      <td>
-        <%= gravatar_for punch.user, size: 50 %>
-        <%= link_to punch.user.name, punch.user %>
-      </td>
-      <td>
-        <% if logged_in? && punch.user_id == current_user.id %>
-          <%= link_to "#{punch.punch_at_in}", edit_punch_path(punch, edit: 'in') %>
-        <% else %>
-          <%= punch.punch_at_in %>
-        <% end %>
-      </td>
-      <td>
-        <% if punch.punch_at_out %>
-          <% if logged_in? %>
-            <% if punch.user_id == current_user.id %>
-              <%= link_to "#{punch.punch_at_out}", edit_punch_path(punch, edit: 'out') %>
-            <% else %>
-              <%= punch.punch_at_out %>
-            <% end %>
+      <ul class="punch-list-contents">
+        <li class="user-img user-img-contents">
+          <%= user_img(punch.user) %>
+        </li>
+        <li class="user-name user-name-contents">
+          <%= link_to punch.user.name, punch.user %>
+        </li>
+        <li class="punch-at-in-time punch-at-in-time-contents">
+          <% if logged_in? && punch.user_id == current_user.id %>
+            <%= link_to "#{punch.punch_at_in}", edit_punch_path(punch, edit: 'in') %>
+          <% else %>
+            <%= punch.punch_at_in %>
           <% end %>
-        <% else %>
-          <p>no punch</p>
-        <% end %>
-      </td>
+        </li>
+        <li class="punch-at-out-time punch-at-out-time-contents">
+          <% if punch.punch_at_out %>
+            <% if logged_in? %>
+              <% if punch.user_id == current_user.id %>
+                <%= link_to "#{punch.punch_at_out}", edit_punch_path(punch, edit: 'out') %>
+              <% else %>
+                <%= punch.punch_at_out %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p>no punch</p>
+          <% end %>
+        </li>
+      </ul>
       <% end %>
-    </tr>
-  </div>
-</table>
+    </div>
