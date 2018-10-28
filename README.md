@@ -5,15 +5,11 @@
 
 基本的機能は作成完了
 
-現在は機能拡張・UI/UXを作成中
+現在は機能拡張・UI/UXを改良
 
-sampleアカウント
+Ruby 2.4.1
 
-ユーザー名:　usagisan
-
-メールアドレス: usagisan@gmail.com
-
-パスワード: usagisan
+Rails 5.1.6
 
 
 　使い方
@@ -31,8 +27,3 @@ sampleアカウント
  ⑥Punch!ボタンをクリックで打刻完了！
  
  ・Punch　list(打刻時間一覧)からすでに登録した時間を編集可能
- 
-
-Ruby 2.4.1
-
-Rails 5.1.6
