@@ -308,40 +308,37 @@ header {
   
   #user-icon {
     vertical-align: middle;
+    margin-left: 30px;
   }
 }
 
-.user-img {
-  width: 10%;
-}
-
-.user-name {
-  width: 30%;
+.user-img-name {
+  width: 50%;
 }
 
 .punch-at-in-time {
-  width: 30%;
+  width: 25%;
+  text-align: center;
+  
 }
 
 .punch-at-out-time {
-  width: 30%;
-}
-
-.user-img-contents {
+  width: 25%;
   text-align: center;
 }
 
-.user-name-contents {
+.user-img-name-contents {
   
   a {
-    margin-left: 10px;
-    font-size: 20px;
+    font-size: 16px;
+    margin-left: 15px;
   }
 }
 
 /* User show ========================== */
 
 .user-show {
+  
   #user-show-icon {
     width: 100px;
     height: 100px;

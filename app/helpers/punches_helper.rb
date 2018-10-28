@@ -4,7 +4,8 @@ module PunchesHelper
     !session[:punch_at].nil?
   end
   
-  def datetime_ja
-    strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒")
+  # 記録した時間の年日を省いて単位を「時・分」表示にする
+  def to_time(punch)
+    punch.strftime("%-k時%-M分")
   end
 end
