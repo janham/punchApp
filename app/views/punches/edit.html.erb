@@ -19,7 +19,7 @@
             <%= f.label :punch_at_out, "退社時間" %>
             <% if @punch.punch_at_out %>
               <div class="before-punch-edit">
-                <a>変更前</a><%= to_tim(@punch.punch_at_out) %>
+                <a>変更前</a><%= to_time(@punch.punch_at_out) %>
               </div>
               <div class="punch-edit-select-form">
                 <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
