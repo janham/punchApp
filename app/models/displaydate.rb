@@ -1,0 +1,2 @@
+class Displaydate < ApplicationRecord
+end

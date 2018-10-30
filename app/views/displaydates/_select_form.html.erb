@@ -1,0 +1,6 @@
+<div class="select-form">
+  <%= form_for @displaydate, url: select_form_path do |f| %>
+    <%= f.date_select :list_date %>
+    <%= f.submit "移動", class: "btn btn-primary" %>
+  <% end %>
+</div>

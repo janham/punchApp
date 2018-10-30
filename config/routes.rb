@@ -6,7 +6,12 @@ root 'static_pages#home'
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  patch '/select_form', to: 'displaydates#update'
   resources :users
   resources :posts, only: [:create, :destroy]
   resources :punches
 end
+
+=begin
+
+=end

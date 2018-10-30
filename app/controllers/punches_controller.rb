@@ -1,8 +1,9 @@
 class PunchesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
+  before_action :reset_today, only: [:create, :update]
 
   def index
-    @punches = Punch.all
+    @punches = Punch.where(punch_date: choice_date)
   end
 
   def create
@@ -80,18 +81,7 @@ class PunchesController < ApplicationController
     redirect_to root_url
   end
   
-  #年日のみの文字列に変換するメソッド
-  def to_year_date(data)
-    data.year.to_s + data.month.to_s + data.day.to_s
-  end
-  
-  #今日の年日のみを返すメソッド
-  def today
-    now = Time.new
-    return to_year_date(now).to_i
-  end
-  
-  #今日の打刻がすでに存在するかどうかを判別する
+  # 今日の打刻がすでに存在するかどうかを判別する
   def already_punch_in?
     punch = Punch.find_by(user_id: params[:punch][:user_id], punch_date: today)
     !punch.nil?
@@ -102,7 +92,7 @@ class PunchesController < ApplicationController
     !punch.punch_at_out.nil?
   end
   
-  #beforeアクション
+  # beforeアクション
   
   def correct_user
     punch = Punch.find_by(id: params[:id])
