@@ -3,11 +3,17 @@
   <%= render 'layouts/flash' %>
   <div class="container">
     <div>
-      <div class="back-btn">
-      <%= link_to "戻る", root_path, id: "back-btn" %>
+      <div class="list-top">
+        <div class="back-btn">
+          <div class="btn-box">
+            <%= link_to "戻る", root_path, id: "back-btn" %>
+          </div>
+        </div>
+        <%= render 'displaydates/select_form' %>
       </div>
-      <%= render 'displaydates/select_form' %>
-      <%= render 'shared/punch_list' %>
+      <div class="list-bottom">
+        <%= render 'shared/punch_list' %>
+      </div>
     </div>
   </div>
 </div>

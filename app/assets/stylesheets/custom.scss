@@ -242,33 +242,72 @@ header {
 }
 
 /* Stamp list ========================== */
+  
+.list-top {
+  width: 100%;
+  overflow: hidden;
+  height :55px;
+}
 
 .back-btn {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  
-  #back-btn {
-    display: inline-block;
-    padding: 8px 24px;
-    color: white;
-    opacity: 0.8;
-    border-radius: 4px;
-    background-color: #f778b8;
-    cursor: pointer;
-    box-shadow: 0 5px #e04893;
-    font-size: 20px;
+  width: 30%;
+  height: 55px;
+  float: left;
+  position: relative;
+}
 
-    &:hover {
-      opacity: 1;
-    }
-    
-    &:active {
-      position: relative;
-      top: 7px;
-      box-shadow: none;
-    }
+.btn-box {
+  position: absolute;
+  bottom: 10px;
+}
+
+#back-btn {
+  display: inline-block;
+  padding: 4px 12px;
+  color: white;
+  opacity: 0.8;
+  border-radius: 4px;
+  background-color: #f778b8;
+  cursor: pointer;
+  box-shadow: 0 5px #e04893;
+  font-size: 16px;
+
+  &:hover {
+    opacity: 1;
   }
+  
+  &:active {
+    position: relative;
+    top: 7px;
+    box-shadow: none;
+  }
+}
+
+.current-date {
+  width: 40%;
+  float: left;
+  text-align: center;
+  font-size: 35px;
+  height: 55px;
+}
+
+#current-y-d {
+  position: absolute;
+  bottom: 0px;
+}
+
+.date-choice {
+  width: 30%;
+  text-align: right;
+  float: left;
+  height: 55px;
+  position: relative;
+}
+
+#edit_displaydate_1 {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
 }
 
 
