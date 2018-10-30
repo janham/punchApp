@@ -1,26 +1,35 @@
 <% provide(:title, 'Time table') %>
-<h1>打刻時間の変更</h1>
-
-<%= user_img(@user) %>
-<%= link_to @punch.user.name, @punch.user %>
-
-<div>
-  <%= form_for(@punch) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <% if punch_at_session_in? %>
-      変更前<%= @punch.punch_at_in %>
-      <%= f.label :punch_at_in, "出社時間" %>
-      <%= f.datetime_select :punch_at_in, minute_step: 5, default: @punch.punch_at_in %>
-    <% else %>
-      <%= f.label :punch_at_out, "退社時間" %>
-      <% if @punch.punch_at_out %>
-        変更前<%= @punch.punch_at_out %>
-        <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
-      <% else %>
-        <%= f.datetime_select :punch_at_out, minute_step: 5, include_blank: true %>
-      <% end %>
-    <% end %>
-    <%= f.submit "更新", class: "btn btn-primary" %>
-    <%= link_to "削除", punch_path, method: :delete, data: { confirm: "一覧から一日分の打刻を削除します。よろしいですか？" } %>
-  <% end %>
+<div class="main">
+  <div class="container">
+    <div>
+      <h1>打刻時間の変更</h1>
+      <div class="punch-time-edit">
+        
+      </div>
+      <div class="user-edit-top">
+        <%= user_img(@user) %>
+        <%= link_to @punch.user.name, @punch.user %>
+      </div>
+      <div>
+        <%= form_for(@punch) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <% if punch_at_session_in? %>
+            変更前<%= to_time(@punch.punch_at_in) %>
+            <%= f.label :punch_at_in, "出社時間" %>
+            <%= f.datetime_select :punch_at_in, minute_step: 5, default: @punch.punch_at_in %>
+          <% else %>
+          <%= f.label :punch_at_out, "退社時間" %>
+            <% if @punch.punch_at_out %>
+              <a>変更前</a><%= to_tim(@punch.punch_at_out) %>
+              <%= f.datetime_select :punch_at_out, minute_step: 5, default: @punch.punch_at_out %>
+            <% else %>
+              <%= f.datetime_select :punch_at_out, minute_step: 5, include_blank: true %>
+            <% end %>
+          <% end %>
+          <%= f.submit "更新", class: "btn btn-primary" %>
+          <%= link_to "削除", punch_path, method: :delete, data: { confirm: "一覧から一日分の打刻を削除します。よろしいですか？" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
