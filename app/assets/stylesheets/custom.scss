@@ -94,6 +94,7 @@ header {
 }
 
 .header-menus {
+  
   li {
     float: left;
     line-height: 64px;
@@ -122,6 +123,58 @@ header {
 .header-menus-right {
   float: right;
   padding-right: 40px;
+}
+
+.user-dropmenu {
+  position: relative;
+  margin-left: 10px;
+  
+  ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0s;
+    
+    li {
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+      
+      a {
+        display: block;
+        background-color: #3ecdc6;
+        width: 100%;
+        color: #ffffff;
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
+      }
+    }
+  }
+  
+  &:hover {
+    
+    ul {
+      visibility: visible;
+      opacity: 1;
+      
+      li {
+        
+        a {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+#down {
+  margin: 0 5px 0 5px;
 }
 
 #logo {
