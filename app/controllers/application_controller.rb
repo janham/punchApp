@@ -26,6 +26,12 @@ class ApplicationController < ActionController::Base
     return to_year_date(now).to_i
   end
   
+  # before_action
+  
+  def not_user_page
+    session[:page] = nil
+  end
+  
   private
   
     def logged_in_user

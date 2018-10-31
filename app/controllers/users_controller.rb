@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :reset_today, only: :show
+  before_action :user_show_page, only: :show
   
   def index
      @users = User.paginate(page: params[:page])
@@ -64,5 +65,9 @@ class UsersController < ApplicationController
     
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+    
+    def user_show_page
+      session[:page] = "user_show"
     end
 end

@@ -12,7 +12,11 @@
     </li>
     <li class="punch-at-in-time punch-at-in-time-contents">
       <% if logged_in? && punch.user_id == current_user.id %>
-        <%= link_to "#{to_time(punch.punch_at_in)}", edit_punch_path(punch, edit: 'in') %>
+        <% if user_page? %>
+          <%= link_to "#{to_date(punch.punch_at_in)}#{to_time(punch.punch_at_in)}", edit_punch_path(punch, edit: 'in') %>
+        <% else %>
+          <%= link_to "#{to_time(punch.punch_at_in)}", edit_punch_path(punch, edit: 'in') %>
+        <% end %>
       <% else %>
         <%= to_time(punch.punch_at_in) %>
       <% end %>
@@ -20,7 +24,11 @@
     <li class="punch-at-out-time punch-at-out-time-contents">
       <% if punch.punch_at_out %>
         <% if logged_in? && punch.user_id == current_user.id %>
-          <%= link_to "#{to_time(punch.punch_at_out)}", edit_punch_path(punch, edit: 'out') %>
+          <% if user_page? %>
+            <%= link_to "#{to_date(punch.punch_at_out)}#{to_time(punch.punch_at_out)}", edit_punch_path(punch, edit: 'out') %>
+          <% else %>
+            <%= link_to "#{to_time(punch.punch_at_out)}", edit_punch_path(punch, edit: 'out') %>
+          <% end %>
         <% else %>
           <%= to_time(punch.punch_at_out) %>
         <% end %>
