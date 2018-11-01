@@ -1,11 +1,11 @@
-=begin
+
 User.create!(name:  "管理アカウント",
              email: "admin@gmail.com",
              password:              "20181031",
              password_confirmation: "20181031",
              group: "0",
              admin: true)
-=end
+             
 User.create!(name:  "CEO",
              email: "ceo@gmail.com",
              password:              "ceoceo",
@@ -29,8 +29,14 @@ User.create!(name:  "かんがえうさぎ",
              password:              "kangae",
              password_confirmation: "kangae",
              group: "2")
+             
+User.create!(name:  "すばやうさぎ",
+             email: "subaya@gmail.com",
+             password:              "subaya",
+             password_confirmation: "subaya",
+             group: "3")
 
-#Displaydate.create(list_date: Time.new)
+Displaydate.create(list_date: Time.new)
 
-#Post.create(content: "Me deja postear!",
-#            user_id: "1")
+Post.create(content: "Me deja postear!",
+            user_id: "1")
