@@ -44,6 +44,7 @@ body {
   height: auto;
   min-height: 100%;
   background-color: #f5f8fa;
+  z-index: 0;
 }
 
 .container {
@@ -67,6 +68,7 @@ body {
   width: 100%;
   line-height: 30px;
   color: #ffffff;
+  z-index: 99;
 }
 
 .alert-error {
@@ -192,15 +194,51 @@ header {
 
 /* Home ========================== */
 
-.account-list {
+.home-section {
   padding-left: 100px;
   padding-right: 100px;
+}
+
+.tabs {
+  background-color: white;
+  overflow: hidden;
+  height: 35px;
+  padding-left: 25px;
+  
+  li {
+  float: left;
+  line-height: 35px;
+  padding: 0 5px;
+  width: 15%;
+  text-align: center;
+  
+      a {
+        color: #57575f;
+      }
+  }
+  
+  .active {
+    background-color: #3ecdc6;
+    
+    input {
+      color: white;
+    }
+  }
+}
+
+.tab-frame {
+  padding: 20px 10px 30px 10px;
+  background-color: #3ecdc6;
+  overflow: hidden;
+  width: 100%;
+}
+
+.account-list {
   
   li {
     padding: 10px 20px;
     background-color: white;
     overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
     display: table;
     width: 100%;
   }
@@ -210,7 +248,7 @@ header {
     position:relative;
     padding-left: 25px;
     line-height: 50px;
-    font-size: 20px;
+    font-size: 17px;
   }
   
   label input {
@@ -370,7 +408,6 @@ header {
    li {
     background-color: white;
     overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
     display: inline-block;
     float: left;
    }
@@ -432,7 +469,6 @@ header {
 .punch-edit-form {
   padding: 50px 50px 50px 50px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   width: 100%;
   
   label {
@@ -466,6 +502,8 @@ header {
     width: 100px;
     height: 100px;
     float: left;
+    border-radius: 0%;
+    border: solid 4px;
   }
 }
   
@@ -483,32 +521,7 @@ header {
   overflow: hidden;
 }
 
-.user-tabs {
-  background-color: white;
-  overflow: hidden;
-  height: 35px;
-  padding-left: 25px;
-  
-  li {
-  float: left;
-  line-height: 35px;
-  padding: 0 5px;
-  
-      a {
-        color: #57575f;
-      }
-  }
-  
-  .active {
-    background-color: #3ecdc6;
-  }
-}
-
 .tab-frame {
-  padding: 20px 10px 30px 10px;
-  background-color: #3ecdc6;
-  overflow: hidden;
-  width: 100%;
   
   .punch-list {
     margin-top: 0;
@@ -536,7 +549,6 @@ header {
 .user-edit-form {
   padding: 20px 50px 50px 50px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   width: 100%;
   
   label {
@@ -550,7 +562,6 @@ header {
 .user-new-form {
   padding: 20px 50px 50px 50px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   width: 100%;
   
   label {
@@ -564,7 +575,6 @@ header {
 .user-login-form {
   padding: 20px 50px 50px 50px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   width: 100%;
   
   label {
@@ -592,7 +602,6 @@ header {
 .posts-index-left {
   padding: 20px 20px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   width: 35%;
   float: left;
 }
@@ -610,7 +619,6 @@ header {
 .post-contents-box {
   padding: 30px 50px;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
   margin-bottom: 5px;
 }
 

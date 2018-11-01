@@ -9,7 +9,9 @@
         <div class="posts-content-middle">
           <div class="content">
             <%= post.content %>
-            <%= image_tag post.picture.url if post.picture? %>
+            <div>
+              <%= image_tag post.picture.url if post.picture? %>
+            </div>
           </div>
         </div>
         <div class="posts-content-bottom">

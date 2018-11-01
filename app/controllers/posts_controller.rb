@@ -12,10 +12,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash.now[:success] = "投稿しました"
-      redirect_to root_url
+      redirect_to '/posts'
     else
+      flash.now[:error] = "内容を入力して投稿してください"
       @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'posts/index'
+      redirect_to '/posts'
     end
   end
 

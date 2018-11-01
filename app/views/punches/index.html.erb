@@ -1,19 +1,16 @@
 <% provide(:title, 'Time table') %>
-<div class="main">
-  <a><%= render 'layouts/flash' %></a>
-  <div class="container">
-    <div>
-      <div class="list-top">
-        <div class="back-btn">
-          <div class="btn-box">
-            <%= link_to "戻る", root_path, id: "back-btn" %>
-          </div>
+<div class="container">
+  <div>
+    <div class="list-top">
+      <div class="back-btn">
+        <div class="btn-box">
+          <%= link_to "戻る", root_path, id: "back-btn" %>
         </div>
-        <%= render 'displaydates/select_form' %>
       </div>
-      <div class="list-bottom">
-        <%= render 'shared/punch_list' %>
-      </div>
+      <%= render 'displaydates/select_form' %>
+    </div>
+    <div class="list-bottom">
+      <%= render 'shared/punch_list' %>
     </div>
   </div>
-</div>
+</div

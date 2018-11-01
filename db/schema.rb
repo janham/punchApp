@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030053133) do
+ActiveRecord::Schema.define(version: 20181101075326) do
 
   create_table "displaydates", force: :cascade do |t|
     t.date "list_date"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20181030053133) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "picture"
+    t.string "group"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

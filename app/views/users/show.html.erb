@@ -1,37 +1,35 @@
 <% provide(:title, @user.name) %>
-<div class="main">
-  <div class="container">
-    <div class="user-show">
-      <div class="user-show-top">
-        <%= user_img(@user) %>
-        <div class="user-show-name">
-          <h1><%= @user.name %></h1>
-        </div>
+<div class="container">
+  <div class="user-show">
+    <div class="user-show-top">
+      <%= user_img(@user) %>
+      <div class="user-show-name">
+        <h1><%= @user.name %></h1>
       </div>
-      <div class="user-show-bottom">
-        <ul class="user-tabs">
-          <li class=<%= "active" if session[:show_page] == "stamps_tab" %>>
-            <%= button_to "MyStamps", {controller: 'users', action: 'show'}, {method: :get, params: {show_id: 'stamps'}} %>
-          </li>
-          <li class=<%= "active" if session[:show_page] == "posts_tab" %>>
-            <%= button_to "MyPosts", {controller: 'users', action: 'show'}, {method: :get, params: {show_id: 'posts'}} %>
-          </li>
-        </ul>
-        <div class="tab-frame">
-          <% if session[:show_page] == "posts_tab" %>
-          <div class="user-post">
-            <% if @user.posts.any? %>
-              <h3>posts (<%= @user.posts.count %>)</h3>
-              <div class="user-posts-index">
-                <%= render 'posts/post_list' %>
-              </div>
-            <% end %>
-          </div>
-          <div class="user-punch-list">
-            <% else %>
-              <%= render 'shared/punch_list' %>
-            <% end %>
-          </div>
+    </div>
+    <div class="user-show-bottom">
+      <ul class="user-tabs tabs">
+        <li class=<%= "active" if session[:show_page] == "stamps_tab" %>>
+          <%= button_to "MyStamps", {controller: 'users', action: 'show'}, {method: :get, params: {show_id: 'stamps'}} %>
+        </li>
+        <li class=<%= "active" if session[:show_page] == "posts_tab" %>>
+          <%= button_to "MyPosts", {controller: 'users', action: 'show'}, {method: :get, params: {show_id: 'posts'}} %>
+        </li>
+      </ul>
+      <div class="tab-frame">
+        <% if session[:show_page] == "posts_tab" %>
+        <div class="user-post">
+          <% if @user.posts.any? %>
+            <h3>posts (<%= @user.posts.count %>)</h3>
+            <div class="user-posts-index">
+              <%= render 'posts/post_list' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="user-punch-list">
+          <% else %>
+            <%= render 'shared/punch_list' %>
+          <% end %>
         </div>
       </div>
     </div>

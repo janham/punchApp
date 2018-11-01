@@ -6,7 +6,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    
-    <%= yield %>
+    <div class="main">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div class="main">
   </body>
 </html>
