@@ -26,7 +26,7 @@ class PunchesController < ApplicationController
           data = @punch.punch_at_in
           @punch.punch_date = to_year_date(data).to_i 
           if @punch.save 
-            flash.now[:success] = "打刻が完了しました"
+            flash[:success] = "打刻が完了しました"
             redirect_to '/punches'
           end
         end
@@ -39,7 +39,7 @@ class PunchesController < ApplicationController
           @punch = punches.find_by(punch_date: today) 
           @punch.update_attributes(status: "out", punch_at_out: Time.new)
           if @punch.save  
-            flash.now[:success] = "打刻が完了しました"
+            flash[:success] = "打刻が完了しました"
             redirect_to '/punches'
           end
         end

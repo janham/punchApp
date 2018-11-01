@@ -14,6 +14,11 @@
             <%= user_img(user) %>
             <%= user.name %>
             </label>
+            <div class="admin">
+              <% if current_user && current_user.admin? %>
+                <%= link_to "ユーザー削除", user, method: :delete, data: { confirm: "ユーザーを削除します。よろしいですか？" } %>
+              <% end %>
+            </div>
           </li>
           <% end %>
         </ul>

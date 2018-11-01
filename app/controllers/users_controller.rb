@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :reset_today, only: :show
-  before_action :reset_page, only: [:index, :page, :new, :create, :edit, :update, :destroy]
-  
-  def index
-     @users = User.paginate(page: params[:page])
-  end
+  before_action :reset_page, only: [:page, :new, :create, :edit, :update, :destroy]
   
   def show
     @user = User.find(params[:id])
@@ -54,7 +50,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "ユーザーを削除しました"
-    redirect_to users_url
+    redirect_to 'root_url'
   end
   
   private

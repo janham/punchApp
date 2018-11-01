@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :reset_today
   
   def home
 #    if logged_in?
@@ -11,11 +12,5 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-  end
-
-  def contact
-  end
-  
-  def punch
   end
 end

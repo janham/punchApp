@@ -18,6 +18,9 @@
             <% if current_user?(post.user) %>
               <%= link_to "削除", post, method: :delete, data: { confirm: "投稿を削除します。よろしいですか？" } %>
             <% end %>
+            <% if current_user && current_user.admin? %>
+              <%= link_to "管理者権限で削除", posts_path, method: :delete, data: { confirm: "投稿を削除します。よろしいですか？" } %>
+            <% end %>
           </div>
         </div>
       </div>
