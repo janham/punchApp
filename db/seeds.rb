@@ -18,6 +18,7 @@ User.create!(name:  "CFO",
              password_confirmation: "cfocfo",
              group: "1")
              
+
 User.create!(name:  "COO",
              email: "coo@gmail.com",
              password:              "coocoo",
@@ -35,8 +36,8 @@ User.create!(name:  "すばやうさぎ",
              password:              "subaya",
              password_confirmation: "subaya",
              group: "3")
+             
+Displaydate.create!(list_date: Time.new)
 
-Displaydate.create(list_date: Time.new)
-
-Post.create(content: "Me deja postear!",
-            user_id: "1")
+Post.create!(content: "Me deja postear!",
+             user_id: "1")
