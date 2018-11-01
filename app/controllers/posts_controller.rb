@@ -1,22 +1,27 @@
 class PostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy] 
   before_action :correct_user,   only: :destroy
-  before_action :not_user_page
+  before_action :reset_page
+  
+  def index
+    @posts = Post.all
+    @post  = current_user.posts.build
+  end
   
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "投稿しました"
+      flash.now[:success] = "投稿しました"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      render 'posts/index'
     end
   end
 
   def destroy
     @post.destroy
-    flash[:success] = "投稿を削除しました"
+    flash.now[:success] = "投稿を削除しました"
     redirect_to request.referrer || root_url
   end
 

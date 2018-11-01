@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
   
   # before_action
   
-  def not_user_page
-    session[:page] = nil
+  def reset_page
+    session[:show_page] = nil
   end
   
   private

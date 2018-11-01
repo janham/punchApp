@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :reset_today, only: :show
-  before_action :user_show_page, only: :show
+  before_action :reset_page, only: [:index, :page, :new, :create, :edit, :update, :destroy]
   
   def index
      @users = User.paginate(page: params[:page])
@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
     @punches = Punch.where(user_id: params[:id])
+    if params[:show_id] == "posts"
+      session[:show_page] = "posts_tab"
+    elsif params[:show_id] == "stamps"
+      session[:show_page] = "stamps_tab"
+    else
+      session[:show_page] = "stamps_tab"
+    end
   end
   
   def new
@@ -65,9 +72,5 @@ class UsersController < ApplicationController
     
     def admin_user
       redirect_to(root_url) unless current_user.admin?
-    end
-    
-    def user_show_page
-      session[:page] = "user_show"
     end
 end

@@ -1,0 +1,26 @@
+<div class="posts-index-right" %>
+  <% @posts.each do |post| %>
+    <div class="post-contents-box">
+      <div class="posts-content">
+        <div class="posts-content-top">
+          <%= link_to user_img(post.user), post.user %>
+          <%= link_to(post.user.name, post.user ) %>
+        </div>
+        <div class="posts-content-middle">
+          <div class="content">
+            <%= post.content %>
+            <%= image_tag post.picture.url if post.picture? %>
+          </div>
+        </div>
+        <div class="posts-content-bottom">
+          <div class="timestamp">
+            <%= time_ago_in_words(post.created_at) %> 前
+            <% if current_user?(post.user) %>
+              <%= link_to "削除", post, method: :delete, data: { confirm: "投稿を削除します。よろしいですか？" } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

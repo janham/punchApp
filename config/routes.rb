@@ -8,7 +8,7 @@ root 'static_pages#home'
   delete '/logout', to: 'sessions#destroy'
   patch '/select_form', to: 'displaydates#update'
   resources :users
-  resources :posts, only: [:create, :destroy]
+  resources :posts
   resources :punches
 end
 
