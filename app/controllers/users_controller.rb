@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :reset_today, only: :show
-  before_action :reset_page, only: [:page, :new, :create, :edit, :update, :destroy]
+  before_action :reset_user_show_params, only: :show
   
   def show
     @user = User.find(params[:id])
@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "ユーザーを削除しました"
     redirect_to 'root_url'
+  end
+  
+  #before_action
+  def reset_user_show_params
+    params[:show_tag] = "stamps" if params[:show_tag] == nil
   end
   
   private

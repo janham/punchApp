@@ -1,7 +1,6 @@
 class PunchesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :reset_today, only: [:create, :update]
-  before_action :reset_page
 
   def index
     @punches = Punch.where(punch_date: choice_date)

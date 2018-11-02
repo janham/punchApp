@@ -14,11 +14,6 @@ class ApplicationController < ActionController::Base
     displaydate.list_date = Time.new
   end
   
-  # before_action
-  
-  def reset_page
-    session[:show_page] = nil
-  end
   
   private
   
