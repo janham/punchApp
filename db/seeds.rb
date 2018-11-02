@@ -1,4 +1,4 @@
-
+=begin
 User.create!(name:  "管理アカウント",
              email: "admin@gmail.com",
              password:              "20181031",
@@ -37,7 +37,7 @@ User.create!(name:  "すばやうさぎ",
              password_confirmation: "subaya",
              group: "3")
              
-Displaydate.create!(list_date: Time.new)
-
 Post.create!(content: "Me deja postear!",
              user_id: "1")
+=end
+Displaydate.create!(list_date: Time.new)
