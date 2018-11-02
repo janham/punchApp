@@ -22,6 +22,14 @@
               <%= f.label :パスワードの確認 %>
               <%= f.password_field :password_confirmation %>
             </div>
+            <div class="new-group form">
+              <%= f.label :所属 %>
+              <%= f.select :group, [["取締役", "1" ],
+                                    ["経理", "2" ],
+                                    ["開発", "3" ],
+                                    ["営業", "4" ],
+                                    ["その他", "0" ]] %>
+            </div>
             <div class="edit-user-img form">
               <%= f.label :アカウント画像の変更 %>
               <%= f.file_field :picture %>
