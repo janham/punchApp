@@ -10,8 +10,8 @@
     <nav>
       <ul class="header-menus header-menus-right">
         <li><%= link_to "StampList", punches_path %></li>
-        <li><%= link_to "Posts", posts_path %></li>
         <% if logged_in? %>
+        <li><%= link_to "Posts", posts_path %></li>
         <li class="user-dropmenu" id="dropmenu">
           <a><%= user_img(current_user) %></a><a id="down">▼</a>
           <ul>

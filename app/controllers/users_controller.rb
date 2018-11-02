@@ -9,13 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
     @punches = Punch.where(user_id: params[:id])
-    if params[:show_id] == "posts"
-      session[:show_page] = "posts_tab"
-    elsif params[:show_id] == "stamps"
-      session[:show_page] = "stamps_tab"
-    else
-      session[:show_page] = "stamps_tab"
-    end
+    session[:show_page] = params[:show_tag]
   end
   
   def new

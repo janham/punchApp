@@ -4,8 +4,13 @@ class PostsController < ApplicationController
   before_action :reset_page
   
   def index
-    @posts = Post.all
-    @post  = current_user.posts.build
+    if logged_in?
+      @posts = Post.all
+      @post  = current_user.posts.build
+    else
+      flash[:error] = "ログインしてください"
+      redirect_to root_url
+    end
   end
   
   def create

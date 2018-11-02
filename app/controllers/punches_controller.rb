@@ -22,9 +22,11 @@ class PunchesController < ApplicationController
           flash[:error] = "本日の出社時間はすでに打刻済みです"
           redirect_to '/punches'
         else 
-          @punch = @user.punches.new(status: params[:punch][:status], punch_at_in: Time.new)
-          data = @punch.punch_at_in
-          @punch.punch_date = to_year_date(data).to_i 
+          @punch = @user.punches.new(status: params[:punch][:status], 
+                                     punch_at_in: Time.new,
+                                     punch_date: Time.new)
+#          data = @punch.punch_at_in
+#          @punch.punch_date = to_year_date(data).to_i 
           if @punch.save 
             flash[:success] = "打刻が完了しました"
             redirect_to '/punches'
@@ -36,7 +38,7 @@ class PunchesController < ApplicationController
           redirect_to '/punches'
         else
           punches = Punch.where(user_id: params[:punch][:user_id])
-          @punch = punches.find_by(punch_date: today) 
+          @punch = punches.find_by(punch_date: Time.new) 
           @punch.update_attributes(status: "out", punch_at_out: Time.new)
           if @punch.save  
             flash[:success] = "打刻が完了しました"
@@ -63,8 +65,7 @@ class PunchesController < ApplicationController
     @punch = Punch.find_by(id: params[:id])
     if session[:punch_at] == "in" 
       @punch.punch_at_in = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i, params[:punch]["punch_at_in(2i)"].to_i, params[:punch]["punch_at_in(3i)"].to_i, params[:punch]["punch_at_in(4i)"].to_i, params[:punch]["punch_at_in(5i)"].to_i)
-      in_date = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i, params[:punch]["punch_at_in(2i)"].to_i, params[:punch]["punch_at_in(3i)"].to_i)
-      @punch.punch_date = to_year_date(in_date).to_i
+      @punch.punch_date = Time.zone.local(params[:punch]["punch_at_in(1i)"].to_i, params[:punch]["punch_at_in(2i)"].to_i, params[:punch]["punch_at_in(3i)"].to_i)
     else  
       @punch.punch_at_out = Time.zone.local(params[:punch]["punch_at_out(1i)"].to_i, params[:punch]["punch_at_out(2i)"].to_i, params[:punch]["punch_at_out(3i)"].to_i, params[:punch]["punch_at_out(4i)"].to_i, params[:punch]["punch_at_out(5i)"].to_i)
     end
@@ -84,12 +85,12 @@ class PunchesController < ApplicationController
   
   # 今日の打刻がすでに存在するかどうかを判別する
   def already_punch_in?
-    punch = Punch.find_by(user_id: params[:punch][:user_id], punch_date: today)
+    punch = Punch.find_by(user_id: params[:punch][:user_id], punch_date: Time.new)
     !punch.nil?
   end
   
   def already_punch_out?
-    punch = Punch.find_by(user_id: params[:punch][:user_id], punch_date: today)
+    punch = Punch.find_by(user_id: params[:punch][:user_id], punch_date: Time.new)
     !punch.punch_at_out.nil?
   end
   
