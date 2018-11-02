@@ -4,6 +4,6 @@
 <div class="date-choice">
   <%= form_for @displaydate, url: select_form_path do |f| %>
     <%= f.date_select :list_date %>
-    <%= f.submit "移動", class: "btn btn-primary" %>
+    <%= f.submit "移動", class: "btn btn-primary", id: "date-jump" %>
   <% end %>
 </div>

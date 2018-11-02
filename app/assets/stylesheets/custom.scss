@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
+h3 {
+  color: #ffffff;
+}
+
 a {
   text-decoration: none;
   color: #2d3133;
@@ -32,7 +36,7 @@ form input[type="submit"] {
 
 body {
   color: #2d3133;
-  background-color: #3ecdc6;
+  background-color: #36261a;
   margin: 0;
   min-height: 1vh;
 }
@@ -43,7 +47,7 @@ body {
   width: 100%;
   height: auto;
   min-height: 100%;
-  background-color: #f5f8fa;
+  background-color: #d1cdc4;
   z-index: 0;
 }
 
@@ -81,8 +85,28 @@ body {
 
 .list {
   a:hover {
-    color: green;
+    color: #fc551f;
   }
+}
+
+.btn {
+  color: white;
+  opacity: 0.8;
+  border-radius: 4px;
+  background-color: #fc551f;
+  cursor: pointer;
+  box-shadow: 0 5px #ca3303;
+  border: none;
+  
+  &:hover {
+    opacity: 1;
+  }
+    
+    &:active {
+      position: relative;
+      top: 7px;
+      box-shadow: none;
+    }
 }
 
 /* header ========================== */
@@ -113,7 +137,7 @@ header {
   a {
     float: left;
     font-size: 13px;
-    color: white;
+    color: #fc551f;
   }
 }
 
@@ -148,7 +172,7 @@ header {
       
       a {
         display: block;
-        background-color: #3ecdc6;
+        background-color: #36261a;
         width: 100%;
         color: #ffffff;
         visibility: hidden;
@@ -169,6 +193,10 @@ header {
         a {
           visibility: visible;
           opacity: 1;
+          
+          &:hover {
+            color: #fc551f;
+          }
         }
       }
     }
@@ -176,6 +204,7 @@ header {
 }
 
 #down {
+  color: #ffffff;
   margin: 0 5px 0 5px;
 }
 
@@ -199,8 +228,13 @@ header {
   padding-right: 100px;
 }
 
+.users-box {
+  border-radius: 2px 2px 0 0;
+  overflow: hidden;
+}
+
 .tabs {
-  background-color: white;
+  background-image: image-url("p0040_m.jpeg");
   overflow: hidden;
   height: 35px;
   padding-left: 25px;
@@ -212,13 +246,18 @@ header {
   width: 15%;
   text-align: center;
   
-      a {
-        color: #57575f;
-      }
+  input {
+    height: 35px;
+    width: 100%;
+  }
+  
+    a {
+      color: #57575f;
+    }
   }
   
   .active {
-    background-color: #3ecdc6;
+    background-color: #7b5544;
     
     input {
       color: white;
@@ -228,7 +267,7 @@ header {
 
 .tab-frame {
   padding: 20px 10px 30px 10px;
-  background-color: #3ecdc6;
+  background-color: #7b5544;
   overflow: hidden;
   width: 100%;
 }
@@ -237,7 +276,7 @@ header {
   
   li {
     padding: 10px 20px;
-    background-color: white;
+    background-image: image-url("p0040_m.jpeg");
     overflow: hidden;
     display: table;
     width: 100%;
@@ -282,53 +321,114 @@ header {
   display: inline-block;
   width: 100%;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
   
-  label {
-    display:inline-block;
-    position:relative;
-    padding-left: 25px;
-    line-height: 50px;
-    font-size: 30px;
-    margin-left: 35px;
-    margin-right: 35px;
-  }
+  .status-radio_button-box {
+    overflow: hidden;
+    display: inline-block;
+    padding: 0 100px;
+    
+    label {
+      display:block;
+      float: left;
+      position:relative;
+      padding-left: 25px;
+      line-height: 50px;
+      margin-left: 35px;
+      margin-right: 35px;
+      
+      
+      input[type='radio'] {
+        position:absolute;
+        width: 25px;
+        height: 25px;
+        top:0;
+        bottom:0;
+        left:0;
+        margin:auto;
+        z-index: 1;
+      
+        &:checked + div span {
+          position: absolute;
+          top: -5px;
+          left: 100%;
+          display: inline-block;
+          visibility: visible;
+          clear: both;
+          margin: 0 0 0 20px;
+          padding: 0px 5px;
+          transition: transform 200ms ease;
+          transform: translateX(0px);
+          text-align: center;
+          white-space: nowrap;
+          color: #ffffff;
+          border-radius: 4px;
+          background-color: rgba(34, 34, 34, 0.9);
+          box-shadow: 0 0 10px rgba(34, 34, 34, 0.2);
+          
+          &:before {
+            position: absolute;
+            top: 4px;
+            left: -1px;
+            content: '';
+            transform: rotate(45deg);
+            border-top: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid rgba(34, 34, 34, 0.9);
+          }
+        }
+      }
+    
+    div {
+      position: relative;
+      display: inline-block;
+      
+      span {
+        position: absolute;
+        visibility: hidden;
+        transition: transform 200ms ease;
+        transform: translateX(-10px);
+        font-size: 15px;
+        z-index: 2;
+      }
+    }  
   
-  label input {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    margin:auto;
+      &:nth-of-type(1) input[type='radio']:checked + div span {
+        background-color: #2e9b72;
+      }
+      
+      &:nth-of-type(1) input[type='radio']:checked + div span:before {
+        border-top: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid rgba(46,156,114, 0.9);
+      }
+    
+      &:nth-of-type(2) input[type='radio']:checked + div span {
+        background-color: #36509a;
+      }
+    
+      &:nth-of-type(2) input[type='radio']:checked + div span:before {
+        border-top: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid rgba(54,80,154, 0.9);
+      }
+    }
   }
+}
+
+.in-out {
+  font-size: 30px;
+  color: #7b5544;
 }
 
 .punch-btn {
   display: inline-block;
   width: 100%;
   text-align: center;
-  margin-top: 30px;
   
   #punch-btn {
-    display: inline-block;
     padding: 8px 24px;
-    color: white;
-    opacity: 0.8;
-    border-radius: 4px;
-    background-color: #f778b8;
-    cursor: pointer;
-    box-shadow: 0 5px #e04893;
     font-size: 35px;
-
-    &:hover {
-      opacity: 1;
-    }
-    
-    &:active {
-      position: relative;
-      top: 7px;
-      box-shadow: none;
-    }
   }
 }
 
@@ -344,33 +444,15 @@ header {
   width: 30%;
   height: 55px;
   float: left;
-  position: relative;
 }
 
 .btn-box {
-  position: absolute;
-  bottom: 10px;
-}
-
-#back-btn {
-  display: inline-block;
-  padding: 4px 12px;
-  color: white;
-  opacity: 0.8;
-  border-radius: 4px;
-  background-color: #f778b8;
-  cursor: pointer;
-  box-shadow: 0 5px #e04893;
-  font-size: 16px;
-
-  &:hover {
-    opacity: 1;
-  }
+  width: 50px;
+  text-align: center;
+  margin-top: 25px;
   
-  &:active {
-    position: relative;
-    top: 7px;
-    box-shadow: none;
+  a {
+    color: #ffffff;
   }
 }
 
@@ -401,15 +483,24 @@ header {
   right: 0;
 }
 
+#date-jump {
+  width: 50px;
+  height: 24px;
+}
+
 
 .punch-list {
   margin-top: 20px;
   
    li {
-    background-color: white;
+    background-color: none;
     overflow: hidden;
     display: inline-block;
     float: left;
+   }
+   .border {
+     width: 2px;
+     background-color: #d1cdc4;
    }
 }
 
@@ -417,6 +508,7 @@ header {
   display: inline-block;
   width: 100%;
   overflow: hidden;
+  background-image: image-url("p0040_m.jpeg");
   
   li {
     line-height: 44px;
@@ -425,6 +517,7 @@ header {
 }
 
 .punch-list-contents {
+  background-image: image-url("p0040_m.jpeg");
   display: inline-block;
   width: 100%;
   overflow: hidden;
@@ -442,13 +535,14 @@ header {
 }
 
 .user-img-name {
-  width: 50%;
+  width: 45%;
+  margin-right: 2px;
 }
 
 .punch-at-in-time {
   width: 25%;
   text-align: center;
-  
+  margin-right: 2px;
 }
 
 .punch-at-out-time {
@@ -503,7 +597,7 @@ header {
     height: 100px;
     float: left;
     border-radius: 0%;
-    border: solid 4px;
+    border: solid 4px #7b5544;
   }
 }
   
@@ -519,6 +613,10 @@ header {
 .user-show-bottom {
   margin-top: 40px;
   overflow: hidden;
+  
+  .border {
+     background-color: #7b5544;
+   }
 }
 
 .tab-frame {
@@ -588,9 +686,23 @@ header {
   }
 }
 
+.sign-up-link {
+  
+  a {
+    color:#7b5544;
+    font-size: 18px;
+  }
+}
+
 /* Post index ========================== */
 
 .posts-index {
+  
+  #user-icon {
+    width: 55px;
+    height: 55px;
+    border: solid 4px #d1cdc4;
+  }
   
   .container {
     padding-left: 10px;
@@ -601,7 +713,7 @@ header {
 
 .posts-index-left {
   padding: 20px 20px;
-  background-color: white;
+  background-image: image-url("p0040_m.jpeg");
   width: 35%;
   float: left;
 }
@@ -617,9 +729,9 @@ header {
 }
 
 .post-contents-box {
-  padding: 30px 50px;
-  background-color: white;
+  padding: 10px 50px;
   margin-bottom: 5px;
+  background-image: image-url("p0040_m.jpeg");
 }
 
 .posts-content-middle {

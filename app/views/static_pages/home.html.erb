@@ -1,52 +1,62 @@
 <% full_title(yield(:title)) %>
 <div class="container">
   <div class="home-section">
-    <ul class="home-user-tabs tabs">
-      <li class=<%= "active" if session[:user_group] == "1" %>>
-        <%= button_to "取締役", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 1 }} %>
-      </li>
-      <li class=<%= "active" if session[:user_group] == "2" %>>
-        <%= button_to "経理", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 2 }} %>
-      </li>
-      <li class=<%= "active" if session[:user_group] == "3" %>>
-        <%= button_to "開発", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 3 }} %>
-      </li>
-      <li class=<%= "active" if session[:user_group] == "4" %>>
-        <%= button_to "営業", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 4 }} %>
-      </li>
-      <li class=<%= "active" if session[:user_group] == "0" %>>
-        <%= button_to "その他", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 0 }} %>
-      </li>
-    </ul>
-    <div class="tab-frame">
-      <%= form_for(@punch, url:{ controller: :punches, action: :create }) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-        <ul class="account-list list">
-          <li><%= link_to "＋アカウントの追加", signup_path %></li>
-          <% @users.each do |user| %>
-          <li>
-            <label>
-            <%= f.radio_button :user_id, "#{user.id}", class: "user-radio" %>
-            <%= user_img(user) %>
-            <%= user.name %>
-            </label>
-            <div class="admin">
-              <% if current_user && current_user.admin? %>
-                <%= link_to "ユーザー削除", user, method: :delete, data: { confirm: "ユーザーを削除します。よろしいですか？" } %>
-              <% end %>
-            </div>
-          </li>
-          <% end %>
-        </ul>
+    <div class="users-box">
+      <ul class="home-user-tabs tabs">
+        <li class=<%= "active" if session[:user_group] == "1" %>>
+          <%= button_to "取締役", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 1 }} %>
+        </li>
+        <li class=<%= "active" if session[:user_group] == "2" %>>
+          <%= button_to "経理", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 2 }} %>
+        </li>
+        <li class=<%= "active" if session[:user_group] == "3" %>>
+          <%= button_to "開発", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 3 }} %>
+        </li>
+        <li class=<%= "active" if session[:user_group] == "4" %>>
+          <%= button_to "営業", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 4 }} %>
+        </li>
+        <li class=<%= "active" if session[:user_group] == "0" %>>
+          <%= button_to "その他", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 0 }} %>
+        </li>
+      </ul>
+      <div class="tab-frame">
+        <%= form_for(@punch, url:{ controller: :punches, action: :create }) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <ul class="account-list list">
+            <li><%= link_to "＋アカウントの追加", signup_path %></li>
+            <% @users.each do |user| %>
+              <li>
+                <label>
+                <%= f.radio_button :user_id, "#{user.id}", class: "user-radio" %>
+                <%= user_img(user) %>
+                <%= user.name %>
+                </label>
+                <div class="admin">
+                  <% if current_user && current_user.admin? %>
+                    <%= link_to "ユーザー削除", user, method: :delete, data: { confirm: "ユーザーを削除します。よろしいですか？" } %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
       <div class="punch-pass">
         <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
-      <dev class="status-select">
-        <label><%= f.radio_button :status, "in", class: "status-in" %>出勤</label>
-        <label><%= f.radio_button :status, "out", class: "status-out" %>退勤</label>
-      </dev>
+      <div class="status-select">
+        <div class="status-radio_button-box">
+          <label for="d_rb1">
+            <%= f.radio_button :status, "in", class: "status-in", id: "d_rb1" %>
+            <div class="in-out">出勤<span>オハヨ！</span></div>
+          </label>
+          <label for="d_rb2">
+            <%= f.radio_button :status, "out", class: "status-out", id: "d_rb2" %>
+            <div class="in-out">退勤<span>オツカレ！</span></div>
+          </label>
+        </div>
+      </div>
       <div class="punch-btn">
         <%= f.submit "Punch!", class: "btn btn-primary", id: "punch-btn" %>
       </div>
