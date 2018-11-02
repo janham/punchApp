@@ -25,8 +25,6 @@ class PunchesController < ApplicationController
           @punch = @user.punches.new(status: params[:punch][:status], 
                                      punch_at_in: Time.new,
                                      punch_date: Time.new)
-#          data = @punch.punch_at_in
-#          @punch.punch_date = to_year_date(data).to_i 
           if @punch.save 
             flash[:success] = "打刻が完了しました"
             redirect_to '/punches'

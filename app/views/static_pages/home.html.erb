@@ -6,10 +6,13 @@
         <%= button_to "取締役", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 1 }} %>
       </li>
       <li class=<%= "active" if session[:user_group] == "2" %>>
-        <%= button_to "開発", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 2 }} %>
+        <%= button_to "経理", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 2 }} %>
       </li>
       <li class=<%= "active" if session[:user_group] == "3" %>>
-        <%= button_to "営業", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 3 }} %>
+        <%= button_to "開発", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 3 }} %>
+      </li>
+      <li class=<%= "active" if session[:user_group] == "4" %>>
+        <%= button_to "営業", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 4 }} %>
       </li>
       <li class=<%= "active" if session[:user_group] == "0" %>>
         <%= button_to "その他", {controller: 'static_pages', action: 'home'}, {method: :get, params: {user_group: 0 }} %>

@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   
   # display_dateを今日の日付にリセットする
   def reset_today
-    @displaydate = Displaydate.find_by(id:1)
-    @displaydate.list_date = Time.new
+    displaydate = Displaydate.find_by(id:1)
+    displaydate.list_date = Time.new
   end
   
   # before_action
