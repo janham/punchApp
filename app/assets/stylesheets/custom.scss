@@ -146,6 +146,15 @@ header {
   padding-left: 20px;
 }
 
+#logo {
+  margin-top: 5px;
+  
+  img {
+    height: 25px;
+    object-fit: cover;
+  }
+}
+
 .header-menus-right {
   float: right;
   padding-right: 40px;
@@ -326,7 +335,7 @@ header {
   .status-radio_button-box {
     overflow: hidden;
     display: inline-block;
-    padding: 0 100px;
+    padding: 10px 100px;
     
     label {
       display:block;
@@ -543,11 +552,21 @@ header {
   width: 25%;
   text-align: center;
   margin-right: 2px;
+  
+  a {
+    text-decoration: underline;
+    font-size: 16px;
+  }
 }
 
 .punch-at-out-time {
   width: 25%;
   text-align: center;
+  
+  a {
+    text-decoration: underline;
+    font-size: 16px;
+  }
 }
 
 .user-img-name-contents {

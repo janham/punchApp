@@ -6,7 +6,9 @@
         <li><%= link_to "About", about_path %></li>
       </ul>
     </nav>
-    <%= link_to "PunchApp", root_path, id: "logo" %>
+    <%= link_to root_path, id: "logo" do %>
+      <%= image_tag "PunchApp_white_logo.png" %>
+    <% end %>
     <nav>
       <ul class="header-menus header-menus-right">
         <li><%= link_to "StampList", punches_path %></li>

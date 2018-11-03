@@ -1,6 +1,7 @@
 class PunchesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :reset_today, only: [:create, :update]
+  before_action :reset_show_params, only: [:index]
 
   def index
     @punches = Punch.where(punch_date: choice_date)
@@ -98,5 +99,9 @@ class PunchesController < ApplicationController
     user_id = punch.user_id
     @user = User.find(user_id)
     redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  def reset_show_params
+    session[:show_page] = nil
   end
 end
