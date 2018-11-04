@@ -2,6 +2,78 @@
 <div class="main">
   <div class="container">
     <h1>About</h1>
+    <div class="about-top">
+      <p>PunchAppではシンプルな操作で勤怠表に時間を記録することができます。</p>
+    </div>
+    <div class="about-home about">
+      <h3>Home</h3>
+      <div>
+        <%= image_tag '/assets/about_home.jpg' %>
+      </div>
+      <div class="explanation">
+        <div class="explanation-punch">
+          <a>時間の打刻方法</a>
+          <p>
+            ①　アカウント画像左のボタンにチェック<br>
+            ②　パスワードを入力<br>
+            ③　出勤or退勤をチェック<br>
+            ④　Punch!ボタンを押す<br>
+            　・自動的に現在の日付時間で勤怠時間を記録します<br>
+            　※打刻を押した時点で打刻一覧のページへジャンプします<br>
+            　　ジャンプ先のページに打刻記録が見当たらない時は表示一覧の日付が今日の日付になっているか<br>
+            　　ご確認ください
+          </p>
+        </div>
+        <div class="section-explanation">
+          <a>各種メニュー</a>
+          <p>
+          ①アカウント一覧<br>
+          　「＋アカウント作成」から新規アカウントを作成します<br>
+          ②勤怠時間の打刻一覧へのリンク<br>
+          ③コミュニケーションツール「Posts」へのリンク<br>
+          ④現在ログイン中のアカウント<br>
+          　マイページ・・・アカウントのマイページ<br>
+          　設定・・・・・・アカウント情報の変更ができます<br>
+          　ログアウト・・・アカウント切り替えなどの際にログアウトできます<br>
+          　※時間打刻の際にPunch!ボタンを押すことで現在ログイン中のアカウントから<br>
+          　　自動的にチェックしたアカウントにログインが切り替わります
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="about-stamp-list about">
+      <h3>StampList</h3>
+      <p>記録した打刻一覧のページです</p>
+      <div>
+        <%= image_tag '/assets/about_punch_list.jpg' %>
+      </div>
+      <div class="explanation">
+        <div class="section-explanation">
+          <p>
+            ①　現在表示している打刻記録一覧の日付<br>
+            ②　年月日を選択して過去の打刻一覧を表示させます<br>
+            ③　自分の打刻時間を押すと時間を編集できます<br>
+            ④　アカウント名を押すとプロフィールページへ移動します
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="about-posts about">
+      <h3>Posts</h3>
+      <p>画像投稿もできるコミュニケーションツールです</p>
+      <div>
+        <%= image_tag '/assets/about_post.jpg' %>
+      </div>
+      <div class="explanation">
+        <div class="section-explanation">
+          <p>
+            ①　ここから現在ログインしているアカウントで記事を投稿できます<br>
+              　　※投稿できる画像のサイズの上限は3MBです<br>
+            ②　上から新しい順に投稿した記事が表示されます
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

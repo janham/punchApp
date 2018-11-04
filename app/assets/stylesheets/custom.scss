@@ -441,6 +441,37 @@ header {
   }
 }
 
+/* About ========================== */
+
+.about {
+  margin-top: 80px;
+  
+  a {
+    font-size: 20px;
+  }
+  img {
+    width: 100%;
+  }
+  
+  h3 {
+    font-size: 28px;
+  }
+}
+
+.explanation-punch {
+  color: #753920;
+  font-weight: bold;
+}
+
+.section-explanation {
+  color: #fc551f;
+  font-weight: bold;
+}
+
+.about-posts {
+  padding-bottom: 190px;
+}
+
 /* Stamp list ========================== */
   
 .list-top {
