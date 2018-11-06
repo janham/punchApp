@@ -1,7 +1,8 @@
 # README
 
 ## PunchApp
-アプリケーションURL：https://guarded-waters-50223.herokuapp.com/　　
+アプリケーションURL：https://guarded-waters-50223.herokuapp.com/
+
 かんたん操作で勤怠表に時間を記録することができます。  
 使い方の詳細はアプリケーション内の「About」ページに書いてあります。  
 
